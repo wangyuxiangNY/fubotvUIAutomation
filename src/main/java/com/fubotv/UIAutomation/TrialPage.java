@@ -1,6 +1,5 @@
 package com.fubotv.UIAutomation;
 
-import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -32,26 +31,7 @@ public class TrialPage extends Page {
 	 public void signUp7DayTrial()
 	 {
 		 start7DayFreeTrial.click();
-		 
-		 /*
-		 List<WebElement>  buttons = driver.findElements(By.cssSelector("button[class^='social']"));
-		 for (WebElement button: buttons)
-		 {	 System.out.println("class:" + button.getAttribute("class"));
-		     if (button.getAttribute("class").contains("google"))
-		     {
-		    	 button.click();
-		    	 break;
-		     }
-		 }
-	     String mainWindow = switchWindow();
-		// email.sendKeys(TRIAL_USER_NAME);
-	     (WaitUtility.waitForElementToBeVisible(driver, By.id("identifierId"), 15)).sendKeys(TRIAL_USER_NAME);
-		 next.click();
-		 
-		 (WaitUtility.waitForElementToBeVisible(driver, By.name("password"), 15)).sendKeys(TRIAL_PASSWORD);
-		// password.sendKeys(TRIAL_PASSWORD);
-		 passwordNext.click();
-		 */
+		
 		 googleSignup(TRIAL_USER_NAME, TRIAL_PASSWORD);
 		 
 		 driver.switchTo().window(mainWindow);
@@ -76,10 +56,12 @@ public class TrialPage extends Page {
 	 {
 		 driver.findElement(By.cssSelector("button[class*='google']")).click();
 		 mainWindow = switchWindow();
-	     (WaitUtility.waitForElementToBeVisible(driver, By.id("identifierId"), 15)).sendKeys(userName);
+	     (waitForElementToBeVisible(driver, By.id("identifierId"), 15)).sendKeys(userName);
 		 next.click();
-		 (WaitUtility.waitForElementToBeVisible(driver, By.name("password"), 15)).sendKeys(password);
+		 (waitForElementToBeVisible(driver, By.name("password"), 15)).sendKeys(password);
 		 passwordNext.click();
+		 //go back to main window after signup is done
+		 driver.switchTo().window(mainWindow);
 	 }
 	 
 	   

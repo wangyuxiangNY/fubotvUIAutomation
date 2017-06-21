@@ -23,8 +23,9 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.log4j.Logger;
 import org.junit.Rule;
 import org.junit.rules.ErrorCollector;
@@ -187,6 +188,50 @@ public abstract class Page {
 		actionBuilder.moveToElement(hoverTo).click(clickTarget).build().perform();
 		 
 	}
+	
+	public  WebElement find(WebElement element)
+	{
+		return find(element, 20);
+	}
+	
+	public  WebElement find(WebElement element, int timeoutInSecond)
+	{  if (driver == null)
+		System.out.println("driver is null");
+		//cancel implicit wait
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		
+		WebDriverWait wait = new WebDriverWait(driver, timeoutInSecond); 
+		wait.until(ExpectedConditions.visibilityOf(element));
+		
+		//restore implicitWait
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		
+		return element;
+	}
+	
+	public static WebElement find(WebDriver driver, By locator)
+	{
+	      return waitForElementToBeVisible( driver,  locator,  30);
+	}
+	
+	public static WebElement find(WebDriver driver, By locator, int timeoutInSecond)
+	{
+	      return waitForElementToBeVisible( driver,  locator,  timeoutInSecond);
+	}
+	
+	public static WebElement waitForElementToBeVisible(WebDriver driver, By locator, int timeoutInSecond)
+	{
+		//cancel implicit wait
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		
+		WebDriverWait wait = new WebDriverWait(driver, timeoutInSecond); 
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+		
+		//restore implicitWait
+		driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+		
+		return driver.findElement(locator);
+	}	
 	
 	
 }

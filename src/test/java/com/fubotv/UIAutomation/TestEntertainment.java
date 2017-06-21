@@ -1,6 +1,8 @@
 package com.fubotv.UIAutomation;
 
 
+
+
 import com.fubotv.UIAutomation.Page;
 import com.fubotv.UIAutomation.TrialPage;
 
@@ -55,14 +57,14 @@ import org.hamcrest.CoreMatchers;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-public class RunUIAutomationTests {
+public class TestEntertainment {
 
 	private WebDriver driver;
+	private EntertainmentPage entertainPage;
 	private TrialPage trialPage;
+	private HomePage homePage;
 	
-	 String screenshot_prefix;
-	
-	String browser = "chrome";
+	 String browser = "chrome";
 	//String browser = "firefox";
 	//String browser = "edge";
 	//String browser = "ie";
@@ -79,44 +81,28 @@ public class RunUIAutomationTests {
 	{  
 		driver = Utils.launchBrowser(URL, browser);
 	    Page.setDriver(driver);
-	    
 		trialPage = PageFactory.initElements(driver, TrialPage.class);
-		
-        Class clazz = this.getClass(); //if you want to get Class object
-        String clazzName = clazz.getCanonicalName(); //you want to get only class name
-        String currentPath =  System.getProperty("user.dir");
-		String path = currentPath + "\\target\\surefire-reports\\";
-         screenshot_prefix = path + clazzName + "\\" + name.getMethodName();
-   
+	    entertainPage = PageFactory.initElements(driver, EntertainmentPage.class);
+	    homePage = PageFactory.initElements(driver, HomePage.class);
+	    
+
+	    trialPage.googleSignIn();
+	    homePage.gotoPage("Entertainment", "home");
     }
 	
-	private long getCurrentTime()
-	{
-		Date now = new Date();
-		return now.getTime();
-	}
-	
-	private String generateScreenshotName()
-	{
-		return screenshot_prefix + "_" +  getCurrentTime() + ".jpg";
-	}
-	
-	
-	
 	
 	@Test
-	 public void test7DayTrialSignUp() throws Exception
-	 {  
-	     trialPage.signUp7DayTrial();
-	 }
+	public void testPlayChannel() throws Exception
+	{  
+	    entertainPage.playChannelThenPause();
+	}
 	
 	@Test
-	 public void testGoogleSignin() throws Exception
+	 public void testRecordSchedulingAndCancel() throws Exception
 	 {  
-	     trialPage.googleSignIn();
+	    entertainPage.scheduleRecording();
 	 }
 	
-
 	
 	@After
 	public  void tearDown()
@@ -124,5 +110,4 @@ public class RunUIAutomationTests {
 		//driver.quit();
 		
 	}
-	
 }
