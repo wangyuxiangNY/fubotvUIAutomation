@@ -6,20 +6,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-//Home page for signed users
+//Home page for signed-in users
 public class HomePage extends Page{
     // Main category menu
-	@FindBy(xpath="//*[@id='root']/div/div/div/div[1]/div[3]/div/div[1]/div/div[1]/div/a[1]") 
+	@FindBy(css="a[href*='/']")
 		private WebElement  sports;
 
-	//@FindBy(xpath="//*[@id='root']/div/div/div/div[1]/div[3]/div/div[1]/div/div[1]/div/a[2]") 
 	@FindBy(css="a[href*='/entertainment']")
 	    private WebElement  entertainment;
 	
-	@FindBy(xpath="//*[@id='root']/div/div/div/div[1]/div[3]/div/div[1]/div/div[1]/div/a[3]") 
-		private WebElement  guids;
+	@FindBy(css="a[href='/guide']")
+		private WebElement  guide;
 
-	@FindBy(xpath="//*[@id='root']/div/div/div/div[1]/div[3]/div/div[1]/div/div[1]/div/a[4]") 
+	@FindBy(css="a[href*='/dvr']")
     	private WebElement  myDVR;
 
 	//CATEGORY BAR(Top-tier menu)
@@ -41,7 +40,7 @@ public class HomePage extends Page{
 	        	 find(entertainment).click(); 
 	             break;
 	         case "Guids":
-	        	    find(guids).click(); 
+	        	    find(guide).click(); 
 	                 break;
 		     case "MyDVR":
 		        	 find(myDVR).click(); 

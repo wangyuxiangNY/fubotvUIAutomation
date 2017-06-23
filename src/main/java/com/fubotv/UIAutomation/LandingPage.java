@@ -1,12 +1,11 @@
 package com.fubotv.UIAutomation;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class TrialPage extends Page {
-
+public class LandingPage extends Page {
+	
 
 	 @FindBy(css=".menus") private WebElement menus;
 	 @FindBy(css=".list") private WebElement menuOptions;
@@ -27,23 +26,25 @@ public class TrialPage extends Page {
 	 @FindBy(css="#passwordNext" ) private WebElement passwordNext;
 	 
 	 private String mainWindow;  //remember the main window so that later on we can switch back after login.
-      
-	 public void signUp7DayTrial()
+     
+	 
+	 public void signUp7DayTrial(String gmail, String password)
 	 {
 		 start7DayFreeTrial.click();
 		
-		 googleSignup(TRIAL_USER_NAME, TRIAL_PASSWORD);
+		 googleSignup(gmail, password);
 		 
 		 driver.switchTo().window(mainWindow);
-		 System.out.println("Switched to:" + driver.getWindowHandle());
+		 logger.info("Switched to:" + driver.getWindowHandle());
 		 // Verify welcome back message
-		 System.out.println(driver.findElement(By.cssSelector("div.box-container h4")).getText());
+		 logger.info(driver.findElement(By.cssSelector("div.box-container h4")).getText());
 		 
 		 driver.findElement(By.cssSelector("div.box-container > div > button > div > span")).click();
 		 //verify the package plan info are displayed.
 		 
-		
 	 }
+	 
+	
 	 
 	 public void googleSignIn()
 	 {
@@ -56,13 +57,13 @@ public class TrialPage extends Page {
 	 {
 		 driver.findElement(By.cssSelector("button[class*='google']")).click();
 		 mainWindow = switchWindow();
-	     (waitForElementToBeVisible(driver, By.id("identifierId"), 15)).sendKeys(userName);
+	     find(driver, By.id("identifierId"), 15).sendKeys(userName);
 		 next.click();
-		 (waitForElementToBeVisible(driver, By.name("password"), 15)).sendKeys(password);
+		 find(driver, By.name("password"), 15).sendKeys(password);
 		 passwordNext.click();
 		 //go back to main window after signup is done
 		 driver.switchTo().window(mainWindow);
 	 }
 	 
-	   
+
 }
