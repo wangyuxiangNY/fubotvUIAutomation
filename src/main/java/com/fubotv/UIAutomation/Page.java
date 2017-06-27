@@ -1,18 +1,11 @@
 package com.fubotv.UIAutomation;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.remote.Augmenter;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.WebDriver;
@@ -20,9 +13,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-//import org.apache.log4j.Logger;
-import org.junit.Rule;
-import org.junit.rules.ErrorCollector;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,8 +24,6 @@ public abstract class Page {
 	public static WebDriver driver;
 	
 	 static String browser ="";
-	// final String TRIAL_USER_NAME ="fubotvrocks@gmail.com";
-	// final String TRIAL_PASSWORD ="fubotv999";
 	 final String USER_NAME ="yuxiang.wang.ny@gmail.com";
 	 final  String PASSWORD ="Wang1234";
 	

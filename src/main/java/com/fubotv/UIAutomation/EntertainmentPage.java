@@ -38,7 +38,8 @@ public class EntertainmentPage extends Page {
 
     /*   Test case: 
      *1. Verify that live serie videos are displayed
-     *2. Choose one video randomly(So that each time this test case is run, a different video will be hit by the case), and play it
+     *2. Choose one video randomly(So that each time this test case is run,
+     * a different video will be hit by the case), and play it
      */
     public void verifyHome_liveSeries()
     {

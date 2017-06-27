@@ -3,7 +3,8 @@ package com.fubotv.UIAutomation;
 import com.fubotv.UIAutomation.Page;
 import com.fubotv.UIAutomation.LandingPage;
 
-import static org.junit.Assert.fail; 
+import static org.junit.Assert.fail;
+
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.junit.rules.TestWatcher;
@@ -42,7 +43,8 @@ public class TestEntertainment {
 	    
 	    trialPage.googleSignIn();
 	    homePage.gotoPage("Entertainment", "home");
-    }
+	    
+	 }
 	
 	@Test
 	public void testHome_liveSeries() throws Exception
