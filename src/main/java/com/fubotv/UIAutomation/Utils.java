@@ -75,26 +75,7 @@ public class Utils {
 	    }else if (browser.equalsIgnoreCase("chrome"))
 	    {   
 	    	  ChromeDriverManager.getInstance().setup();
-	    	  /*
-		      ChromeOptions options = new ChromeOptions();
-		      options.addArguments("test-type");
-		      
-		      if (OSDetector().equals("Windows"))
-		          options.addArguments("--start-maximized");
-		      else
-		    	  options.addArguments("--kiosk");
-		      driver = new ChromeDriver(options);
-		      */
-	    	
-	    	/*
-	    	System.setProperty("webdriver.chrome.driver", "C:\\Users\\azurewangyx\\seleniumDownloads\\" + "chromedriver.exe");
-	    	  ChromeOptions options = new ChromeOptions();
-	    	  options.addArguments("user-data-dir=C://Users//azurewangyx//AppData//Local//Google//Chrome//User Data");
-	    	  //options.addArguments("test-type");
-	    	  options.addArguments("user-data-dir=C:\\Users\\azurewangyx\\AppData\\Local\\Google\\Chrome\\User Data");
-		    	
-	    	  options.addArguments("–start-maximized");
-	    	  */
+	    	 
 	    	  driver = new ChromeDriver();
 	      
 	      }else if (browser.equalsIgnoreCase("ie"))
