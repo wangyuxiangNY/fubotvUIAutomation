@@ -14,4 +14,4 @@ Or you can run **TestEntertainment.java** from eclipse directly as junit test.
 
  **Test case 3:** Verify that user can mute/unmute/change volume
 
-
+Contact me: yuxiang.wang.ny@gmail.com if any problems. Thanks.
